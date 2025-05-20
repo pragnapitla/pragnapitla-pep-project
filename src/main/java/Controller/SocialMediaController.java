@@ -29,7 +29,9 @@ public class SocialMediaController {
         app.post("/login", this::handleLogin);
         app.post("/messages", this::createMessage);
         
-        app.get("/accounts/{account_id}/messages", this::getAllMessages);
+        app.get("/messages", this::getAllMessages);
+        app.get("/accounts/{account_id}/messages", this::getMessagesByUser);
+
 
         app.get("/messages/{message_id}", this::getMessageById);
         app.patch("/messages/{message_id}", this::updateMessage);
@@ -79,7 +81,6 @@ private void handleRegister(Context ctx) {
     List<Message> messages = service.getAllMessages();
     ctx.json(messages); 
     }
-
 
     public void getMessagesByUser(Context ctx) {
     
