@@ -118,9 +118,9 @@ private void handleRegister(Context ctx) {
         int messageId = Integer.parseInt(ctx.pathParam("message_id"));
         Message deleted = service.deleteMessageById(messageId);
         if (deleted != null) {
-            ctx.json(deleted); // 200 OK and return deleted message
+            ctx.json(deleted); 
         } else {
-            ctx.status(200).result(""); // 200 OK with empty response
+            ctx.status(200).result(""); 
         }
     }
 

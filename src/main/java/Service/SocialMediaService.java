@@ -23,12 +23,12 @@ public class SocialMediaService {
     public Account registerUser(Account user) {
     if (user.getUsername() == null || user.getUsername().trim().isEmpty()
             || user.getPassword() == null || user.getPassword().length() < 5) {
-        return null; // Invalid input
+        return null; 
     }
 
-    // Check if username already exists
+    // checking user exist
     if (userDAO.getUserByUsername(user.getUsername()) != null) {
-        return null; // Duplicate username
+        return null; 
     }
     return userDAO.registerUser(user);    
     }
@@ -68,7 +68,7 @@ public class SocialMediaService {
     
 
     public Message updateMessage(int id, Message newMessageData) {
-        // Only message_text is expected to change
+    
         if (newMessageData.getMessage_text() == null || newMessageData.getMessage_text().trim().isEmpty()
                 || newMessageData.getMessage_text().length() > 255) {
             return null;
@@ -81,10 +81,10 @@ public class SocialMediaService {
     }
 
     public Message deleteMessageById(int messageId) {
-        // First, check if the message exists
+        
         Message msg = messageDAO.getMessageById(messageId);
         if (msg != null) {
-            messageDAO.deleteMessage(messageId); // delete from DB
+            messageDAO.deleteMessage(messageId); 
             return msg;
         }
         return null;
